@@ -1,13 +1,10 @@
-﻿using MpMigrate.MaestroPanel.Api;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ImportEmail
+﻿namespace ImportEmail
 {
+    using MpMigrate.MaestroPanel.Api;
+    using System;
+    using System.IO;
+    using System.Linq;
+
     class Program
     {
         private static ApiClient _client;
