@@ -14,6 +14,8 @@
             var host = GetArgument(args,"--host");
             var apikey = GetArgument(args, "--apikey");
             var port = GetArgument(args, "--port");
+            //var rebuild = GetArgument(args, "--rebuild");
+
             var apiPort = 9715;
 
             string[] lines = null;
@@ -38,6 +40,7 @@
 
             _client = new ApiClient(apikey, host, port: apiPort);
             var login = _client.Whoami();
+
             if (login.ErrorCode == 0)
             {
                 Console.WriteLine("Login success... ({0})", login.Details.Username);
@@ -70,9 +73,9 @@
                     var password = _row[2];            
 
                     double quota = -1;
-                    double.TryParse(_row[3], out quota);
+                    double.TryParse(_row[3].Trim(), out quota);
 
-                    var addEmailResult = _client.AddMailBox(domainName, mailboxName, password, quota, "", "", fullName);
+                    var addEmailResult = _client.AddMailBox(domainName.Trim(), mailboxName.Trim(), password.Trim(), quota, "", "", fullName.Trim());
 
                     if (addEmailResult.ErrorCode == 0)
                     {
